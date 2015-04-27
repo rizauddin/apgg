@@ -1,8 +1,9 @@
 # Anti-Plagiarism Graph Generator
 
-##Usage
+##Usage Example
 ```python
 import APGG
-G = APGG.generate_graph(2014765479)
+student_id = 2014765479
+G = APGG.generate_graph(student_id)
 APGG.draw(G)
 ```
