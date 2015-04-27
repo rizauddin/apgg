@@ -1,4 +1,4 @@
-# Ant-Plagiarism Graph Generator
+# Anti-Plagiarism Graph Generator
 
 ##Usage
 ```python
