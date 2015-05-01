@@ -17,7 +17,7 @@ def generate_graph(id):
     strid = str(id)
     num = [int(i) for i in strid]
     G = nx.Graph(id=strid)
-    for i in xrange(len(strid)):
+    for i in range(len(strid)):
         size = num[i]
         if size:
             randnums = np.random.random_integers(0, 9, size=size)
@@ -26,22 +26,11 @@ def generate_graph(id):
     return G
 
 def draw(G):
-    #pos=nx.spring_layout(G) # positions for all nodes
+    # positions for all nodes
     pos = nx.random_layout(G)
-    
-    # nodes
-    nx.draw_networkx_nodes(G,pos,node_size=600,alpha=0.8)
-    
-    # edges
-    #nx.draw_networkx_edges(G,pos,width=3,alpha=0.5,edge_color='b')
-    nx.draw_networkx_edges(G,pos)
-    
-    # labels
-    nx.draw_networkx_labels(G,pos,font_size=20,font_family='sans-serif')
 
-    # specifiy edge labels explicitly
-    edge_weight=dict([((u,v,),int(d['weight'])) for u,v,d in G.edges(data=True)])
-    nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_weight)
-    
-    plt.axis('off')
-    plt.show()
+    # draw the graph
+    nx.draw(G,pos=pos, with_labels=True, with_edge_labels=True)
+    edge_weight=dict([((u,v,),int(d['weight'])) 
+                      for u,v,d in G.edges(data=True)])
+    edge_labels=nx.draw_networkx_edge_labels(G,pos=pos,edge_labels=edge_weight)
