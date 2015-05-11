@@ -97,7 +97,7 @@ def generate_graph(id, total_edges=10, directed=False):
     return G
 
 def draw(G, weight='weight'):
-	#Draw graph G
+    #Draw graph G
 	
     # positions for all nodes
     pos = nx.random_layout(G)
