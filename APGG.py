@@ -21,7 +21,7 @@ def generate_flow(id):
     Parameters:
         id: Student id
     Returns:
-        A directed network flow with ten nodes.
+        A directed network flow.
     '''
     strid = str(id)
 
