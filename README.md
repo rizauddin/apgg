@@ -8,9 +8,16 @@ The “Anti-Plagiarism Graph Generator” program is developed to prevent plagia
 The objective of this program is to use student’s identification number to generate a set of graph definition in order to ensure that every student will get an equivalent but different set of lab assignment. Students will then answer the questions based on different graph definition generated for them.
 
 ##Usage Example
+To generate a graph:
 ```python
 import APGG
-student_id = 2014765479
-G = APGG.generate_graph(student_id)
+G = APGG.generate_graph(2020638162, total_edges=10, directed=False)
 APGG.draw(G)
+```
+
+To generate a network flow:
+```python
+import APGG
+L = APGG.generate_flow(2020638162)
+APGG.draw(L, weight='capacity')
 ```
