@@ -25,7 +25,11 @@ def generate_flow(id):
     '''
     strid = str(id)
 
-    nodes = map(lambda n: float(n) if float(n) else 1.0, strid)
+    # In Python 3, map returns an iterable object of type map, 
+    # and not a subscriptible.
+    # Need to force a list.
+    nodes = list(map(lambda n: float(n) if float(n) else 1.0, strid))
+    #nodes = map(lambda n: float(n) if float(n) else 1.0, strid)
 
     L = nx.DiGraph()
 
