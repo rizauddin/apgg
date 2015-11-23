@@ -45,64 +45,38 @@ def generate_flow(id):
     L.add_edge('e','t', capacity=nodes[7])
    
     return L
-    
-def generate_graph(id, total_edges=10, directed=False):
-    '''Generate a graph with weight using student id.
-    Parameters:
-        id: Student id
-        total_edges: The maximum number of edges.
-        directed: Set to True to generate a directed graph.
-    Returns:
-        A directed/undirected graph with total_edges number of edges.
-    '''
 
-    strid = str(id)
+def generate_graph(id=2015234031):
+    '''Parameters:
+        id: Student id
+    Returns:
+        A graph.
+    '''
+    #Generating edges. Assign to next vertex if v_i=id_i
+    edges = []
+    for v, id in enumerate(map(int, str(2013567257))):
+        if v == id:
+            edges.append((v, v+1))
+        else:
+            edges.append((v, id))
     
-    #remove duplicates
-    vertices = list(set(map(int, strid)))
-    
-    #initialize undirected or directed graph
-    G = nx.DiGraph(id=strid) if directed else nx.Graph(id=strid)
-    
+    #initialize graph
+    G = nx.Graph()
+
     #function to generate weight for an edge
-    getweight = lambda a, b: a*b
+    getweight = lambda a, b: a*b if a*b else 1
     
-    num_edges = 0
-    for vertex in vertices:
+    for u, v in edges:
+        #add an edge
+        G.add_edge(u, v, weight=getweight(u, v))
         
-        #enough edges. stop
-        if num_edges == total_edges:
-            break
-            
-        #neglect 0 and 1
-        if vertex > 1:
-            #generate adjacent vertices
-            adjacent_vertices = range(vertex)
-            
-            #remove zero
-            adjacent_vertices = adjacent_vertices[1:]
-            
-            #add edge incident to vertex and adjacent_vertices 1-by-1
-            for adjacent_vertex in adjacent_vertices:
-                
-                #swap the direction if the current number of edge is odd
-                if num_edges % 2:
-                    vertex, adjacent_vertex = adjacent_vertex, vertex
-                
-                #add an edge
-                G.add_edge(vertex, adjacent_vertex, 
-                           weight=getweight(vertex, adjacent_vertex))
-                
-                #enough edges. stop
-                num_edges += 1      
-                if num_edges == total_edges:
-                    break
-            
     return G
+   
 
 def draw(G, weight='weight'):
-    #Draw graph G
-	
+    '''Draw graph G
+    '''
+    
     # positions for all nodes
     pos = nx.random_layout(G)
 
