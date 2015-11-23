@@ -13,7 +13,7 @@ The objective of this program is to use student' identification number to genera
 To generate a graph:
 ```python
 import APGG
-G = APGG.generate_graph(2020638162, total_edges=10, directed=False)
+G = APGG.generate_graph(2020638162)
 G = APGG.generate_graph(2020638162)
 APGG.draw(G)
 ```
